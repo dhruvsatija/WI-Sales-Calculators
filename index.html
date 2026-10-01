@@ -223,7 +223,7 @@ select:disabled{background:#f2f2f2;color:#999}
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 
-<script id="mobile-responsive-js-v128">
+<script id="mobile-responsive-js-v136">
 (function(){
   function initMobileMenu(){
     const toggle=document.getElementById('mobileMenuToggle');
@@ -251,8 +251,11 @@ select:disabled{background:#f2f2f2;color:#999}
       if(window.innerWidth > 768) closeMenu();
     });
   }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded',initMobileMenu);
-  else initMobileMenu();
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded',initMobileMenu,{once:true});
+  } else {
+    initMobileMenu();
+  }
 })();
 </script>
 <div class="app-shell">
@@ -1883,10 +1886,6 @@ window.WOODLE_ACRYLIC_TEXT_CUTOUT_PRICING = [{"size": "2 INCH", "mrp": "20"}, {"
     }
   }, true);
 
-  new MutationObserver(() => setTimeout(update, 0))
-    .observe(document.body, {childList:true, subtree:true, characterData:true});
-
-  setInterval(update, 250);
 })();
 </script>
 
@@ -1938,10 +1937,6 @@ window.WOODLE_ACRYLIC_TEXT_CUTOUT_PRICING = [{"size": "2 INCH", "mrp": "20"}, {"
     }, true);
   });
 
-  // Also retry when an existing handler dynamically reveals a dependent control.
-  new MutationObserver(function(){
-    setTimeout(showMdfPrice, 0);
-  }).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
@@ -2001,11 +1996,6 @@ window.WOODLE_ACRYLIC_TEXT_CUTOUT_PRICING = [{"size": "2 INCH", "mrp": "20"}, {"
     }
   }, true);
 
-  new MutationObserver(function(){
-    setTimeout(updateBulk, 0);
-  }).observe(document.body,{childList:true,subtree:true,characterData:true});
-
-  setInterval(updateBulk, 250);
 })();
 </script>
 
@@ -3645,7 +3635,7 @@ window.WOODLE_ACRYLIC_TEXT_CUTOUT_PRICING = [{"size": "2 INCH", "mrp": "20"}, {"
 })();
 </script>
 
-<script id="mobile-responsive-js-v128">
+<script id="mobile-responsive-js-v136">
 (function(){
   function initMobileMenu(){
     const toggle=document.getElementById('mobileMenuToggle');
